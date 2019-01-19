@@ -1,0 +1,15 @@
+# Don't track content of these folders
+build/
+models/
+
+
+# other sources #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.gz
+*.rar
+*.tar
+*.zip
