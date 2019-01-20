@@ -63,13 +63,16 @@ def dist(p1,p2):
 # Process Image
 datum = op.Datum()
 cap = cv2.VideoCapture(0)
-mode=flag=flag2=1
+mode=1
+flag=[1,1,1,1,1,1]
 n=0
 
 def changemode(m):
 	if(m==1):
 		return 2
 	elif(m==2):
+		return 3
+	elif(m==3):
 		return 1
 
 while True:
@@ -93,35 +96,54 @@ while True:
 
 		# change tabs
 		if(datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]>100 and datum.poseKeypoints[0][7][0]!=0):
-			if(flag==1):
-				flag=0
+			if(flag[0]==1):
+				flag[0]=0
 				pyautogui.hotkey('ctrl','pageup')
 
 		elif(datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]<-60 and datum.poseKeypoints[0][7][0]!=0):
-			if(flag==1):
-				flag=0
+			if(flag[0]==1):
+				flag[0]=0
 				pyautogui.hotkey('ctrl','pagedown')
 
 		elif(datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]>-40 and datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]<40):
-			flag=1
+			flag[0]=1
 
 	elif(mode==2):
 		print("YT MODE")
 		# move 10 secs
 		if(datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]>100 and datum.poseKeypoints[0][7][0]!=0):
-			if(flag2==1):
-				flag2=0
+			if(flag[1]==1):
+				flag[1]=0
 				pyautogui.press('j')
 
-		elif(datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]<-60 and datum.poseKeypoints[0][7][0]!=0):
-			if(flag2==1):
-				flag2=0
+		elif(datum.poseKeypoints[0][3][1]-datum.poseKeypoints[0][4][1]<-60 and datum.poseKeypoints[0][7][0]!=0):
+			if(flag[1]==1):
+				flag[1]=0
 				pyautogui.press('l')
 
-		elif(datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]>-40 and datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]<40):
-			flag2=1
+		elif(datum.poseKeypoints[0][3][1]-datum.poseKeypoints[0][4][1]>-40 and datum.poseKeypoints[0][3][1]-datum.poseKeypoints[0][4][1]<40):
+			flag[1]=1
 
-	# print(str(datum.poseKeypoints[0][4])+"::"+str(datum.poseKeypoints[0][7]))
+		print(datum.poseKeypoints[0][3][1]-datum.poseKeypoints[0][4][1])
+		if(datum.poseKeypoints[0][3][1]-datum.poseKeypoints[0][4][1]>100 and datum.poseKeypoints[0][4][1]!=0):
+			if(flag[1]==1):
+				flag[1]=0
+				pyautogui.press('k')
+
+		elif(datum.poseKeypoints[0][3][1]-datum.poseKeypoints[0][4][1]<-60 and datum.poseKeypoints[0][4][1]!=0):
+			if(flag[1]==1):
+				flag[1]=0
+				pyautogui.press('f')
+
+		elif(datum.poseKeypoints[0][3][1]-datum.poseKeypoints[0][4][1]>-40 and datum.poseKeypoints[0][3][1]-datum.poseKeypoints[0][4][1]<40):
+			flag[1]=1
+
+	elif(mode==3):
+		print("YT MODE 2")
+
+	elif(mode==4):
+		print("mODE 4")
+
 	if(n>=1):
 		n-=1
 		print (n)
@@ -130,5 +152,5 @@ while True:
 		mode=changemode(mode)
 		print("yeaaa")
 
-	cv2.imshow("win", datum.cvOutputData)
+	cv2.imshow("window", datum.cvOutputData)
 	cv2.waitKey(1)
