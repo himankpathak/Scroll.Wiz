@@ -64,7 +64,7 @@ def dist(p1,p2):
 datum = op.Datum()
 cap = cv2.VideoCapture(0)
 mode=1
-flag=[1,1,1,1,1,1]
+flag=flag2=flag3=flag4=flag5=1
 n=0
 
 def changemode(m):
@@ -96,50 +96,78 @@ while True:
 
 		# change tabs
 		if(datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]>100 and datum.poseKeypoints[0][7][0]!=0):
-			if(flag[0]==1):
-				flag[0]=0
+			if(flag2==1):
+				flag2=0
 				pyautogui.hotkey('ctrl','pageup')
 
 		elif(datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]<-60 and datum.poseKeypoints[0][7][0]!=0):
-			if(flag[0]==1):
-				flag[0]=0
+			if(flag2==1):
+				flag2=0
 				pyautogui.hotkey('ctrl','pagedown')
 
 		elif(datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]>-40 and datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]<40):
-			flag[0]=1
+			flag2=1
 
 	elif(mode==2):
 		print("YT MODE")
 		# move 10 secs
 		if(datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]>100 and datum.poseKeypoints[0][7][0]!=0):
-			if(flag[1]==1):
-				flag[1]=0
+			if(flag3==1):
+				flag3=0
 				pyautogui.press('j')
 
-		elif(datum.poseKeypoints[0][3][1]-datum.poseKeypoints[0][4][1]<-60 and datum.poseKeypoints[0][7][0]!=0):
-			if(flag[1]==1):
-				flag[1]=0
+		elif(datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]<-60 and datum.poseKeypoints[0][7][0]!=0):
+			if(flag3==1):
+				flag3=0
 				pyautogui.press('l')
 
-		elif(datum.poseKeypoints[0][3][1]-datum.poseKeypoints[0][4][1]>-40 and datum.poseKeypoints[0][3][1]-datum.poseKeypoints[0][4][1]<40):
-			flag[1]=1
+		elif(datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]>-40 and datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]<40):
+			flag3=1
 
-		print(datum.poseKeypoints[0][3][1]-datum.poseKeypoints[0][4][1])
-		if(datum.poseKeypoints[0][3][1]-datum.poseKeypoints[0][4][1]>100 and datum.poseKeypoints[0][4][1]!=0):
-			if(flag[1]==1):
-				flag[1]=0
+		# play and full screen
+		if(datum.poseKeypoints[0][4][1]-datum.poseKeypoints[0][4][1]>100 and datum.poseKeypoints[0][4][1]!=0):
+			if(flag4==1):
+				flag4=0
 				pyautogui.press('k')
 
 		elif(datum.poseKeypoints[0][3][1]-datum.poseKeypoints[0][4][1]<-60 and datum.poseKeypoints[0][4][1]!=0):
-			if(flag[1]==1):
-				flag[1]=0
+			if(flag4==1):
+				flag4=0
 				pyautogui.press('f')
 
 		elif(datum.poseKeypoints[0][3][1]-datum.poseKeypoints[0][4][1]>-40 and datum.poseKeypoints[0][3][1]-datum.poseKeypoints[0][4][1]<40):
-			flag[1]=1
+			flag4=1
 
 	elif(mode==3):
 		print("YT MODE 2")
+
+		# volume control
+		if(datum.poseKeypoints[0][6][1]-datum.poseKeypoints[0][7][1]>100 and datum.poseKeypoints[0][7][1]!=0):
+			if(flag5==1):
+				flag5=0
+				pyautogui.press('up')
+
+		elif(datum.poseKeypoints[0][6][1]-datum.poseKeypoints[0][7][1]<-60 and datum.poseKeypoints[0][7][1]!=0):
+			if(flag5==1):
+				flag5=0
+				pyautogui.press('down')
+
+		elif(datum.poseKeypoints[0][6][1]-datum.poseKeypoints[0][7][1]>-40 and datum.poseKeypoints[0][6][1]-datum.poseKeypoints[0][7][1]<40):
+			flag5=1
+
+		# video playlist control
+		if(datum.poseKeypoints[0][3][0]-datum.poseKeypoints[0][4][0]>100 and datum.poseKeypoints[0][4][0]!=0):
+			if(flag==1):
+				flag=0
+				pyautogui.hotkey('shift','p')
+
+		elif(datum.poseKeypoints[0][3][0]-datum.poseKeypoints[0][4][0]<-60 and datum.poseKeypoints[0][4][0]!=0):
+			if(flag==1):
+				flag=0
+				pyautogui.hotkey('shift','n')
+
+		elif(datum.poseKeypoints[0][3][0]-datum.poseKeypoints[0][4][0]>-40 and datum.poseKeypoints[0][3][0]-datum.poseKeypoints[0][4][0]<40):
+			flag=1
 
 	elif(mode==4):
 		print("mODE 4")
