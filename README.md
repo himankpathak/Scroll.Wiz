@@ -1,6 +1,8 @@
 # ScrollWiz
 A smart way to communicate with your PC using only gestures and your pre-owned web cam.
 
+![ScrollWiz Cover](https://raw.githubusercontent.com/himankpathak/Scroll.Wiz/master/include/ScrollWiz.jpg)
+
 ### In Early Development State
 This project is still in alpha development stage so bugs and crashes are to be expected.
 
@@ -22,7 +24,9 @@ First select `Configure` and then `Generate`.
 `cd build`
 
 ``make -j`nproc```
+
 `cd python`
+
 `sudo make install`
 
 Add this line to the end of the environment variables file
