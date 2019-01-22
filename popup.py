@@ -1,4 +1,4 @@
-import tkinter as tk 
+import tkinter as tk
 
 
 mname = ['Scroll Mode','YoutubeMode','YoutubeMode2']
@@ -15,13 +15,11 @@ def center_window(root,width=300, height=200):
 
 
 def PopUp(mnum):
-	r = tk.Tk() 
-	button = tk.Button(r, text=mname[mnum], width=25, command=r.destroy) 
+	r = tk.Tk()
+	button = tk.Button(r, text=mname[mnum], width=25, command=r.destroy)
 	button.config(font=("Courier", 15))
-	button.pack() 
+	button.pack()
 	center_window(r,180,50)
 	r.overrideredirect(1)
-	r.after(2000, r.destroy)
-	r.mainloop() 
-
-PopUp(1);
+	r.after(1200, r.destroy)
+	r.mainloop()

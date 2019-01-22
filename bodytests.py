@@ -7,6 +7,8 @@ import argparse
 import numpy as np
 import pyautogui
 
+from popup import PopUp
+
 dir_path = os.path.dirname(os.path.realpath(__file__))
 try:
 	if platform == "win32":
@@ -92,7 +94,7 @@ while True:
 		if(datum.poseKeypoints[0][4][1]==0):
 			pass
 		else:
-			pyautogui.scroll(-(datum.poseKeypoints[0][4][1]-datum.poseKeypoints[0][3][1])/80)
+			pyautogui.scroll(-(datum.poseKeypoints[0][4][1]-datum.poseKeypoints[0][2][1])/80)
 
 		# change tabs
 		if(datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]>100 and datum.poseKeypoints[0][7][0]!=0):
@@ -109,7 +111,8 @@ while True:
 			flag2=1
 
 	elif(mode==2):
-		print("YT MODE")
+		# print("YT MODE")
+
 		# move 10 secs
 		if(datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]>100 and datum.poseKeypoints[0][7][0]!=0):
 			if(flag3==1):
@@ -139,7 +142,7 @@ while True:
 			flag4=1
 
 	elif(mode==3):
-		print("YT MODE 2")
+		# print("YT MODE 2")
 
 		# volume control
 		if(datum.poseKeypoints[0][6][1]-datum.poseKeypoints[0][7][1]>100 and datum.poseKeypoints[0][7][1]!=0):
@@ -169,16 +172,17 @@ while True:
 		elif(datum.poseKeypoints[0][3][0]-datum.poseKeypoints[0][4][0]>-40 and datum.poseKeypoints[0][3][0]-datum.poseKeypoints[0][4][0]<40):
 			flag=1
 
-	elif(mode==4):
-		print("mODE 4")
+	# elif(mode==4):
+		# print("mODE 4")
 
 	if(n>=1):
 		n-=1
-		print (n)
+		# print (n)
 	elif((datum.poseKeypoints[0][4][1]!=0 and n==0) and ((abs(datum.poseKeypoints[0][4][0]-datum.poseKeypoints[0][7][0]) + abs(datum.poseKeypoints[0][4][0]-datum.poseKeypoints[0][7][0])) <180)):
 		n=20
 		mode=changemode(mode)
-		print("yeaaa")
+		PopUp(mode-1);
+		# print("yeaaa")
 
 	cv2.imshow("window", datum.cvOutputData)
 	cv2.waitKey(1)
