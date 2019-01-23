@@ -22,7 +22,6 @@ except ImportError as e:
 
 # Flags
 parser = argparse.ArgumentParser()
-parser.add_argument("--image_path", default="../../../examples/media/COCO_val2014_000000000192.jpg", help="Process an image. Read all standard formats (jpg, png, bmp, etc.).")
 args = parser.parse_known_args()
 
 # Custom Params
@@ -63,10 +62,10 @@ def pressme(button,dir):
     try:
         if(button==2 and dir>0):
             pyautogui.scroll(4)
-            print("scrolling up")
+            # print("scrolling up")
         elif(button==2 and dir<0):
             pyautogui.scroll(-4)
-            print("scrolling down")
+            # print("scrolling down")
     except:
         pass
 
@@ -75,10 +74,10 @@ def coord(p1,p2):
         # print(abs(datum.handKeypoints[1][0][p1][0]-datum.handKeypoints[1][0][p2][0])+abs(datum.handKeypoints[1][0][p1][1]-datum.handKeypoints[1][0][p2][1]))
         # print((((datum.handKeypoints[1][0][p1][0]-datum.handKeypoints[1][0][p2][0])**2) + ((datum.handKeypoints[1][0][p1][1]-datum.handKeypoints[1][0][p2][1])**2))**0.5)
         if(datum.handKeypoints[1][0][p1][2]!=0 and (abs(datum.handKeypoints[1][0][p1][0]-datum.handKeypoints[1][0][p2][0]) + abs(datum.handKeypoints[1][0][p1][1]-datum.handKeypoints[1][0][p2][1]))<30):
-            print("hello")
+            # print("hello")
             return 1
         elif(flagmid>1 and datum.handKeypoints[1][0][p1][2]!=0 and (abs(datum.handKeypoints[1][0][p1][0]-datum.handKeypoints[1][0][p2][0]) + abs(datum.handKeypoints[1][0][p1][1]-datum.handKeypoints[1][0][p2][1]))>60):
-            print("no hello")
+            # print("no hello")
             return -1
         else:
             return 0
@@ -99,7 +98,7 @@ while True:
     # print("Body keypoints: \n" + str(datum.poseKeypoints))
     # print("Left hand keypoints: \n" + str(datum.handKeypoints[0]))
     # print("Right hand keypoints: \n" + str(datum.handKeypoints[1]))
-    # while 1:
+
     if(flagmid<3):
         flagmid+=coord(4,12)
         n=1
@@ -109,11 +108,9 @@ while True:
         pressme(2,datum.handKeypoints[1][0][4][1]-temp)
     else:
         if(datum.handKeypoints[1][0][4][2]==0 or (abs(datum.handKeypoints[1][0][4][0]-datum.handKeypoints[1][0][12][0]) + abs(datum.handKeypoints[1][0][4][1]-datum.handKeypoints[1][0][12][1]) )>70):
-            print("no hello")
             flagmid=0
         pressme(2,datum.handKeypoints[1][0][4][1]-temp)
 
-    # print(str(datum.poseKeypoints[0][4]))
 
-    cv2.imshow("win", datum.cvOutputData)
+    cv2.imshow("window", datum.cvOutputData)
     cv2.waitKey(1)

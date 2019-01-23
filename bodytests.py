@@ -133,12 +133,12 @@ while True:
 				flag4=0
 				pyautogui.press('k')
 
-		elif(datum.poseKeypoints[0][3][1]-datum.poseKeypoints[0][4][1]<-60 and datum.poseKeypoints[0][4][1]!=0):
+		elif(datum.poseKeypoints[0][2][1]-datum.poseKeypoints[0][4][1]<-60 and datum.poseKeypoints[0][4][1]!=0):
 			if(flag4==1):
 				flag4=0
 				pyautogui.press('f')
 
-		elif(datum.poseKeypoints[0][3][1]-datum.poseKeypoints[0][4][1]>-40 and datum.poseKeypoints[0][3][1]-datum.poseKeypoints[0][4][1]<40):
+		elif(datum.poseKeypoints[0][2][1]-datum.poseKeypoints[0][4][1]>-40 and datum.poseKeypoints[0][2][1]-datum.poseKeypoints[0][4][1]<40):
 			flag4=1
 
 	elif(mode==3):
@@ -159,17 +159,17 @@ while True:
 			flag5=1
 
 		# video playlist control
-		if(datum.poseKeypoints[0][3][0]-datum.poseKeypoints[0][4][0]>100 and datum.poseKeypoints[0][4][0]!=0):
+		if(datum.poseKeypoints[0][2][0]-datum.poseKeypoints[0][4][0]>100 and datum.poseKeypoints[0][4][0]!=0):
 			if(flag==1):
 				flag=0
 				pyautogui.hotkey('shift','p')
 
-		elif(datum.poseKeypoints[0][3][0]-datum.poseKeypoints[0][4][0]<-60 and datum.poseKeypoints[0][4][0]!=0):
+		elif(datum.poseKeypoints[0][2][0]-datum.poseKeypoints[0][4][0]<-60 and datum.poseKeypoints[0][4][0]!=0):
 			if(flag==1):
 				flag=0
 				pyautogui.hotkey('shift','n')
 
-		elif(datum.poseKeypoints[0][3][0]-datum.poseKeypoints[0][4][0]>-40 and datum.poseKeypoints[0][3][0]-datum.poseKeypoints[0][4][0]<40):
+		elif(datum.poseKeypoints[0][2][0]-datum.poseKeypoints[0][4][0]>-40 and datum.poseKeypoints[0][2][0]-datum.poseKeypoints[0][4][0]<40):
 			flag=1
 
 	# elif(mode==4):
@@ -182,7 +182,7 @@ while True:
 		n=20
 		mode=changemode(mode)
 		PopUp(mode-1);
-		# print("yeaaa")
+
 
 	cv2.imshow("window", datum.cvOutputData)
 	cv2.waitKey(1)
