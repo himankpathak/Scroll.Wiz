@@ -1,6 +1,7 @@
 # Don't track content of these folders
 build/
 models/
+__pycache__/
 
 
 # other sources #
