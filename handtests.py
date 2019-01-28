@@ -59,15 +59,13 @@ opWrapper.configure(params)
 opWrapper.start()
 
 def pressme(button,dir):
-    try:
-        if(button==2 and dir>0):
-            pyautogui.scroll(4)
-            # print("scrolling up")
-        elif(button==2 and dir<0):
-            pyautogui.scroll(-4)
-            # print("scrolling down")
-    except:
-        pass
+
+    if(button==2 and dir>0):
+        pyautogui.scroll(4)
+        # print("scrolling up")
+    elif(button==2 and dir<0):
+        pyautogui.scroll(-4)
+        # print("scrolling down")
 
 def coord(p1,p2):
     try:
@@ -99,18 +97,21 @@ while True:
     # print("Left hand keypoints: \n" + str(datum.handKeypoints[0]))
     # print("Right hand keypoints: \n" + str(datum.handKeypoints[1]))
 
-    if(flagmid<3):
-        flagmid+=coord(4,12)
-        n=1
-    elif(n==1):
-        n=0
-        temp=datum.handKeypoints[1][0][4][1]
-        pressme(2,datum.handKeypoints[1][0][4][1]-temp)
-    else:
-        if(datum.handKeypoints[1][0][4][2]==0 or (abs(datum.handKeypoints[1][0][4][0]-datum.handKeypoints[1][0][12][0]) + abs(datum.handKeypoints[1][0][4][1]-datum.handKeypoints[1][0][12][1]) )>70):
-            flagmid=0
-        pressme(2,datum.handKeypoints[1][0][4][1]-temp)
+    try:
+        if(flagmid<3):
+            flagmid+=coord(4,12)
+            n=1
+        elif(n==1):
+            n=0
+            temp=datum.handKeypoints[1][0][4][1]
+            pressme(2,datum.handKeypoints[1][0][4][1]-temp)
+        else:
+            if(datum.handKeypoints[1][0][4][2]==0 or (abs(datum.handKeypoints[1][0][4][0]-datum.handKeypoints[1][0][12][0]) + abs(datum.handKeypoints[1][0][4][1]-datum.handKeypoints[1][0][12][1]) )>70):
+                flagmid=0
+            pressme(2,datum.handKeypoints[1][0][4][1]-temp)
 
+    except:
+        pass
 
     cv2.imshow("window", datum.cvOutputData)
     cv2.waitKey(1)

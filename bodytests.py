@@ -89,100 +89,103 @@ while True:
 	# print("Left hand keypoints: \n" + str(datum.handKeypoints[0]))
 	# print("Right hand keypoints: \n" + str(datum.handKeypoints[1]))
 
-	if(mode==1):
-		# scroll content
-		if(datum.poseKeypoints[0][4][1]==0):
-			pass
-		else:
-			pyautogui.scroll(-(datum.poseKeypoints[0][4][1]-datum.poseKeypoints[0][2][1])/80)
+	try:
+		if(mode==1):
+			# scroll content
+			if(datum.poseKeypoints[0][4][1]==0):
+				pass
+			else:
+				pyautogui.scroll(-(datum.poseKeypoints[0][4][1]-datum.poseKeypoints[0][2][1])/80)
 
-		# change tabs
-		if(datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]>100 and datum.poseKeypoints[0][7][0]!=0):
-			if(flag2==1):
-				flag2=0
-				pyautogui.hotkey('ctrl','pageup')
+			# change tabs
+			if(datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]>100 and datum.poseKeypoints[0][7][0]!=0):
+				if(flag2==1):
+					flag2=0
+					pyautogui.hotkey('ctrl','pageup')
 
-		elif(datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]<-60 and datum.poseKeypoints[0][7][0]!=0):
-			if(flag2==1):
-				flag2=0
-				pyautogui.hotkey('ctrl','pagedown')
+			elif(datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]<-60 and datum.poseKeypoints[0][7][0]!=0):
+				if(flag2==1):
+					flag2=0
+					pyautogui.hotkey('ctrl','pagedown')
 
-		elif(datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]>-40 and datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]<40):
-			flag2=1
+			elif(datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]>-40 and datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]<40):
+				flag2=1
 
-	elif(mode==2):
-		# print("YT MODE")
+		elif(mode==2):
+			# print("YT MODE")
 
-		# move 10 secs
-		if(datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]>100 and datum.poseKeypoints[0][7][0]!=0):
-			if(flag3==1):
-				flag3=0
-				pyautogui.press('j')
+			# move 10 secs
+			if(datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]>100 and datum.poseKeypoints[0][7][0]!=0):
+				if(flag3==1):
+					flag3=0
+					pyautogui.press('j')
 
-		elif(datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]<-60 and datum.poseKeypoints[0][7][0]!=0):
-			if(flag3==1):
-				flag3=0
-				pyautogui.press('l')
+			elif(datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]<-60 and datum.poseKeypoints[0][7][0]!=0):
+				if(flag3==1):
+					flag3=0
+					pyautogui.press('l')
 
-		elif(datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]>-40 and datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]<40):
-			flag3=1
+			elif(datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]>-40 and datum.poseKeypoints[0][6][0]-datum.poseKeypoints[0][7][0]<40):
+				flag3=1
 
-		# play and full screen
-		if(datum.poseKeypoints[0][4][1]-datum.poseKeypoints[0][4][1]>100 and datum.poseKeypoints[0][4][1]!=0):
-			if(flag4==1):
-				flag4=0
-				pyautogui.press('k')
+			# play and full screen
+			if(datum.poseKeypoints[0][4][1]-datum.poseKeypoints[0][4][1]>100 and datum.poseKeypoints[0][4][1]!=0):
+				if(flag4==1):
+					flag4=0
+					pyautogui.press('k')
 
-		elif(datum.poseKeypoints[0][2][1]-datum.poseKeypoints[0][4][1]<-60 and datum.poseKeypoints[0][4][1]!=0):
-			if(flag4==1):
-				flag4=0
-				pyautogui.press('f')
+			elif(datum.poseKeypoints[0][2][1]-datum.poseKeypoints[0][4][1]<-60 and datum.poseKeypoints[0][4][1]!=0):
+				if(flag4==1):
+					flag4=0
+					pyautogui.press('f')
 
-		elif(datum.poseKeypoints[0][2][1]-datum.poseKeypoints[0][4][1]>-40 and datum.poseKeypoints[0][2][1]-datum.poseKeypoints[0][4][1]<40):
-			flag4=1
+			elif(datum.poseKeypoints[0][2][1]-datum.poseKeypoints[0][4][1]>-40 and datum.poseKeypoints[0][2][1]-datum.poseKeypoints[0][4][1]<40):
+				flag4=1
 
-	elif(mode==3):
-		# print("YT MODE 2")
+		elif(mode==3):
+			# print("YT MODE 2")
 
-		# volume control
-		if(datum.poseKeypoints[0][6][1]-datum.poseKeypoints[0][7][1]>100 and datum.poseKeypoints[0][7][1]!=0):
-			if(flag5==1):
-				flag5=0
-				pyautogui.press('up')
+			# volume control
+			if(datum.poseKeypoints[0][6][1]-datum.poseKeypoints[0][7][1]>100 and datum.poseKeypoints[0][7][1]!=0):
+				if(flag5==1):
+					flag5=0
+					pyautogui.press('up')
 
-		elif(datum.poseKeypoints[0][6][1]-datum.poseKeypoints[0][7][1]<-60 and datum.poseKeypoints[0][7][1]!=0):
-			if(flag5==1):
-				flag5=0
-				pyautogui.press('down')
+			elif(datum.poseKeypoints[0][6][1]-datum.poseKeypoints[0][7][1]<-60 and datum.poseKeypoints[0][7][1]!=0):
+				if(flag5==1):
+					flag5=0
+					pyautogui.press('down')
 
-		elif(datum.poseKeypoints[0][6][1]-datum.poseKeypoints[0][7][1]>-40 and datum.poseKeypoints[0][6][1]-datum.poseKeypoints[0][7][1]<40):
-			flag5=1
+			elif(datum.poseKeypoints[0][6][1]-datum.poseKeypoints[0][7][1]>-40 and datum.poseKeypoints[0][6][1]-datum.poseKeypoints[0][7][1]<40):
+				flag5=1
 
-		# video playlist control
-		if(datum.poseKeypoints[0][2][0]-datum.poseKeypoints[0][4][0]>100 and datum.poseKeypoints[0][4][0]!=0):
-			if(flag==1):
-				flag=0
-				pyautogui.hotkey('shift','p')
+			# video playlist control
+			if(datum.poseKeypoints[0][2][0]-datum.poseKeypoints[0][4][0]>100 and datum.poseKeypoints[0][4][0]!=0):
+				if(flag==1):
+					flag=0
+					pyautogui.hotkey('shift','p')
 
-		elif(datum.poseKeypoints[0][2][0]-datum.poseKeypoints[0][4][0]<-60 and datum.poseKeypoints[0][4][0]!=0):
-			if(flag==1):
-				flag=0
-				pyautogui.hotkey('shift','n')
+			elif(datum.poseKeypoints[0][2][0]-datum.poseKeypoints[0][4][0]<-60 and datum.poseKeypoints[0][4][0]!=0):
+				if(flag==1):
+					flag=0
+					pyautogui.hotkey('shift','n')
 
-		elif(datum.poseKeypoints[0][2][0]-datum.poseKeypoints[0][4][0]>-40 and datum.poseKeypoints[0][2][0]-datum.poseKeypoints[0][4][0]<40):
-			flag=1
+			elif(datum.poseKeypoints[0][2][0]-datum.poseKeypoints[0][4][0]>-40 and datum.poseKeypoints[0][2][0]-datum.poseKeypoints[0][4][0]<40):
+				flag=1
 
-	# elif(mode==4):
-		# print("mODE 4")
+		# elif(mode==4):
+			# print("mODE 4")
 
-	if(n>=1):
-		n-=1
-		# print (n)
-	elif((datum.poseKeypoints[0][4][1]!=0 and n==0) and ((abs(datum.poseKeypoints[0][4][0]-datum.poseKeypoints[0][7][0]) + abs(datum.poseKeypoints[0][4][0]-datum.poseKeypoints[0][7][0])) <180)):
-		n=20
-		mode=changemode(mode)
-		PopUp(mode-1);
+		if(n>=1):
+			n-=1
+			# print (n)
+		elif((datum.poseKeypoints[0][4][1]!=0 and n==0) and ((abs(datum.poseKeypoints[0][4][0]-datum.poseKeypoints[0][7][0]) + abs(datum.poseKeypoints[0][4][0]-datum.poseKeypoints[0][7][0])) <180)):
+			n=20
+			mode=changemode(mode)
+			PopUp(mode-1);
 
+	except:
+		pass
 
 	cv2.imshow("window", datum.cvOutputData)
 	cv2.waitKey(1)
