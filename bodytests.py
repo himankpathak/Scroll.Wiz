@@ -30,14 +30,9 @@ args = parser.parse_known_args()
 params = dict()
 params["disable_multi_thread"] = False
 # params["camera_resolution"] = "-1x-1"
-params["model_folder"] = "/media/himank/Himank/Projects/LinuxProg/openpose/models/"
+params["model_folder"] = "./models/"
 # params["output_resolution"] = "-1x-1"
 params["net_resolution"] = "128x128"
-# params["hand_net_resolution"] = "368x368"
-# params["hand_scale_number"] = 6
-# params["hand_tracking"] = True
-# params["process_real_time"] = True
-# params["hand"] = False
 params["number_people_max"] = 1
 
 
@@ -86,8 +81,6 @@ while True:
 
 	# Display Image Points
 	# print("Body keypoints: \n" + str(datum.poseKeypoints))
-	# print("Left hand keypoints: \n" + str(datum.handKeypoints[0]))
-	# print("Right hand keypoints: \n" + str(datum.handKeypoints[1]))
 
 	try:
 		if(mode==1):

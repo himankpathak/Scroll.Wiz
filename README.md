@@ -23,7 +23,7 @@ First select `Configure` and then `Generate`.
 
 `cd build`
 
-``make -j`nproc```
+``make -j`nproc` ``
 
 `cd python`
 
